@@ -2,15 +2,26 @@
 
 [![Course](https://img.shields.io/badge/Course-Computer%20Networks%20(CN)-blue.svg)](#)
 [![Assignment](https://img.shields.io/badge/Assignment-01-brightgreen.svg)](#)
-[![Stack](https://img.shields.io/badge/Stack-Node.js%20%7C%20Express%20%7C%20MySQL%20%7C%20Vanilla%20JS-orange.svg)](#)
+[![Student](https://img.shields.io/badge/Student-H.%20Abdullah%20%7C%20P22--9238-purple.svg)](#)
+[![Class](https://img.shields.io/badge/Class-BCS--5C-orange.svg)](#)
 
-A full-stack web application designed for university faculty to publish, update, manage, and track undergraduate and graduate research openings in one centralized portal.
+A full-stack web application developed for university faculty members to post, view, update, and manage research opportunities in one place, backed by a REST API and MySQL database.
 
 ---
 
-## 🔗 GitHub Repository
-**Repository URL:** `https://github.com/username/research-opportunity-portal`  
-*(Replace `username` with your GitHub username upon publishing)*
+## 👤 Student Information
+- **Name:** H. Abdullah
+- **Roll Number:** P22-9238
+- **Section / Class:** BCS-5C
+- **Course:** Computer Networks (CN)
+- **Institution:** National University of Computer & Emerging Sciences (FAST-NUCES), Peshawar Campus
+- **Semester:** Fall-2026
+
+---
+
+## 🔗 Submission Links
+- **GitHub Repository:** `https://github.com/<YOUR_GITHUB_USERNAME>/research-opportunity-portal` *(Replace with your GitHub username)*
+- **Demonstration Video:** `demonstration_video.mp4` (Included directly in the submission ZIP, 42 seconds)
 
 ---
 
@@ -23,8 +34,8 @@ A full-stack web application designed for university faculty to publish, update,
 6. [Installation & Execution](#-installation--execution)
 7. [REST API Documentation](#-rest-api-documentation)
 8. [Postman / Bruno Testing](#-postman--bruno-testing)
-9. [1-Minute Demonstration Video Checklist](#-1-minute-demonstration-video-checklist)
-10. [Submission Checklist](#-submission-checklist)
+9. [One-Minute Demonstration Video](#-one-minute-demonstration-video)
+10. [Submission Package Checklist](#-submission-package-checklist)
 
 ---
 
@@ -41,9 +52,9 @@ A full-stack web application designed for university faculty to publish, update,
 - Server-side data validation and sanitized MySQL parameterized queries.
 
 ### Frontend (Client Interface)
-- Clean, responsive dashboard designed with a modern typography and color system.
+- Responsive dashboard designed with modern typography and color tokens.
 - Live statistics banner (Open positions, Closed positions, Total listings, Available student slots).
-- Real-time search by keyword across titles, supervisors, departments, and skillsets.
+- Real-time search across titles, supervisors, departments, and skillsets.
 - Quick filter by opportunity status (`Open` / `Closed`) and Department.
 - Detail inspection modal.
 - Create & Edit modals with instant client-side validation.
@@ -57,14 +68,14 @@ A full-stack web application designed for university faculty to publish, update,
 - **Backend:** Node.js, Express.js
 - **Database:** MySQL 8.0+
 - **Frontend:** Semantic HTML5, CSS3 (Modern Responsive Flexbox/Grid), Vanilla JavaScript (ES6+)
-- **API Testing:** Postman / Bruno Collection
+- **API Testing:** Postman Collection (v2.1.0)
 
 ---
 
 ## 📁 Project Structure
 
 ```text
-CN assignment/
+P22_9238_H_Abdullah_BCS_5C/
 ├── database/
 │   ├── db.js                 # MySQL connection pool & automatic table bootstrap
 │   └── schema.sql            # SQL table schema & initial seed data
@@ -72,22 +83,23 @@ CN assignment/
 │   └── University_Research_Opportunity_Portal.postman_collection.json
 ├── public/
 │   ├── index.html            # Main web portal interface
-│   ├── style.css             # Polished CSS design system
+│   ├── style.css             # CSS design system
 │   └── app.js                # Frontend REST API integration & UI logic
-├── .env.example              # Environment variables template
+├── demonstration_video.mp4   # 42-second demo video of portal & API
+├── .env.example              # Environment variables template (no credentials)
 ├── .gitignore                # Git ignore rules (node_modules, credentials)
 ├── package.json              # Project metadata & npm dependencies
-├── README.md                 # Complete setup, documentation & submission instructions
+├── README.md                 # Complete setup, documentation & student details
 └── server.js                 # Express server & REST route handlers
 ```
 
 ---
 
 ## 📋 Prerequisites
-Ensure you have the following installed on your machine:
-- **Node.js** (v16.0 or higher) - [Download Node.js](https://nodejs.org/)
-- **MySQL Server** (v8.0 or higher) - [Download MySQL](https://dev.mysql.com/downloads/installer/)
-- **Git** - [Download Git](https://git-scm.com/)
+Ensure you have the following installed:
+- **Node.js** (v16.0 or higher)
+- **MySQL Server** (v8.0 or higher)
+- **Git**
 - **Postman** or **Bruno** (for API testing)
 
 ---
@@ -95,60 +107,40 @@ Ensure you have the following installed on your machine:
 ## 🗄️ Database Setup
 
 ### Option 1: Automatic Setup via Server (Recommended)
-1. Ensure your MySQL service is running.
-2. In the `.env` file, enter your MySQL root password:
+1. Ensure your MySQL service (`MySQL8045`) is running.
+2. Configure `.env` with your MySQL credentials:
    ```env
-   DB_PASSWORD=your_mysql_password
+   PORT=5000
+   DB_HOST=localhost
+   DB_PORT=3306
+   DB_USER=root
+   DB_PASSWORD=Root@1234
+   DB_NAME=research_portal_db
    ```
-3. When you run `npm start`, the server automatically creates the database `research_portal_db`, the `opportunities` table, and seeds the initial 3 opportunities if empty!
+3. Run `npm start`. The server automatically creates the database `research_portal_db`, the `opportunities` table, and seeds the initial 3 opportunities if empty!
 
 ### Option 2: Manual MySQL Import
 Alternatively, import the schema using MySQL CLI:
 ```bash
 mysql -u root -p < database/schema.sql
 ```
-Or open [database/schema.sql](database/schema.sql) in **MySQL Workbench** / **phpMyAdmin** and execute the script.
+Or open [database/schema.sql](database/schema.sql) in **MySQL Workbench** and execute the script.
 
 ---
 
 ## 🚀 Installation & Execution
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/username/research-opportunity-portal.git
-cd research-opportunity-portal
-```
-
-### 2. Install dependencies
+### 1. Install dependencies
 ```bash
 npm install
 ```
 
-### 3. Configure environment variables
-Copy the example environment file:
-```bash
-cp .env.example .env
-```
-Open `.env` and verify your settings:
-```env
-PORT=5000
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=root
-DB_PASSWORD=your_mysql_password
-DB_NAME=research_portal_db
-```
-
-### 4. Start the application
+### 2. Start the server
 ```bash
 npm start
 ```
-*For development auto-restart:*
-```bash
-npm run dev
-```
 
-### 5. Open in browser
+### 3. Open in browser
 Visit **`http://localhost:5000`** in your browser.
 
 ---
@@ -236,7 +228,7 @@ Visit **`http://localhost:5000`** in your browser.
 
 #### 4. Update Opportunity
 - **URL:** `PUT /api/opportunities/:id`
-- **Body:** (Any subset of editable fields)
+- **Body:**
   ```json
   {
     "available_positions": 4,
@@ -283,31 +275,25 @@ Visit **`http://localhost:5000`** in your browser.
 
 ---
 
-## 🎥 1-Minute Demonstration Video Checklist
-Record a video of approximately 60 seconds showing:
-1. **[0:00 - 0:10]** Backend running in terminal (`npm start`) with MySQL connected.
-2. **[0:10 - 0:25]** Frontend web page running in browser:
-   - Displaying loaded research opportunities from database.
-   - Creating a new opportunity using the modal form.
-3. **[0:25 - 0:40]** Frontend actions:
-   - Viewing full details in modal.
-   - Updating an opportunity & toggling status (`Open` ↔ `Closed`).
-   - Deleting an opportunity.
-4. **[0:40 - 0:50]** Showing error handling:
-   - Validation failure on submitting empty form (or 404 demonstration).
-5. **[0:50 - 1:00]** Postman/Bruno API testing demonstration (sending requests & viewing `200`, `201`, `400`, `404`).
+## 🎥 One-Minute Demonstration Video
+The demonstration video (`demonstration_video.mp4`) is included directly inside the submission archive. It demonstrates:
+- Backend server running and connecting to MySQL.
+- Frontend web portal fetching records.
+- Creating a new opportunity via modal form.
+- Viewing full details of an opportunity.
+- Updating status (`Open` to `Closed`).
+- Deleting an opportunity with confirmation.
+- Form validation on required fields.
+- Postman REST API execution (`200 OK` and `404 Not Found`).
 
 ---
 
-## 📦 Submission Checklist
+## 📦 Submission Package Checklist
 
-Before submitting, verify that:
-- [ ] No passwords, API keys, or `.env` files are pushed to GitHub.
-- [ ] Meaningful incremental Git commits are present.
-- [ ] The GitHub repository is public or accessible to the instructor.
-- [ ] Postman collection JSON is present in `postman/`.
-- [ ] Video recording is completed (~1 minute) and placed in the directory or linked in `README.md`.
-- [ ] The submission ZIP archive is named according to your roll number, name, and class:
-  ```text
-  P24_0000_NAME_CLASS.zip
-  ```
+- [x] Complete frontend and backend source code (`server.js`, `public/`, `database/`)
+- [x] Database schema & setup files (`database/schema.sql`, `database/db.js`)
+- [x] Exported Postman collection (`postman/`)
+- [x] `README.md` with setup and student information
+- [x] Demonstration video (`demonstration_video.mp4` — 42s duration)
+- [x] No sensitive passwords or `.env` files committed
+- [x] ZIP file named as required: `P22_9238_H_Abdullah_BCS_5C.zip`

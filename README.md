@@ -20,7 +20,7 @@ A full-stack web application developed for university faculty members to post, v
 ---
 
 ## 🔗 Submission Links
-- **GitHub Repository:** `https://github.com/<YOUR_GITHUB_USERNAME>/research-opportunity-portal` *(Replace with your GitHub username)*
+- **GitHub Repository:** `https://github.com/M-Abdullah-99/research-opportunity-portal`
 - **Demonstration Video:** `demonstration_video.mp4` (Included directly in the submission ZIP, 42 seconds)
 
 ---

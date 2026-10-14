@@ -1,0 +1,271 @@
+{
+  "info": {
+    "_postman_id": "c1f7a29e-4e89-4a0b-9df0-82cbef291841",
+    "name": "University Research Opportunity Portal API",
+    "description": "API Test Suite for University Research Opportunity Portal (Computer Networks Assignment 01).\nCovers all required test cases:\n1. Creating at least 3 research opportunities\n2. Retrieving all research opportunities\n3. Retrieving one opportunity using its ID\n4. Updating an existing opportunity\n5. Changing an opportunity's status from Open to Closed\n6. Deleting an opportunity\n7. Requesting deleted opportunity to demonstrate 404 Not Found\n8. Sending invalid/missing data to demonstrate 400 Bad Request input validation.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "testOpportunityId",
+      "value": "1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Create Opportunity #1 (Edge AI UAVs)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Autonomous Drone Navigation via Edge AI\",\n  \"description\": \"Investigate visual SLAM and deep learning models for obstacle avoidance on resource-constrained UAVs.\",\n  \"area\": \"Artificial Intelligence & Robotics\",\n  \"faculty_name\": \"Dr. Tariq Khan\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, ROS, PyTorch, OpenCV, Linux\",\n  \"available_positions\": 2,\n  \"deadline\": \"2026-11-30\",\n  \"status\": \"Open\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        },
+        "description": "Scenario 1: Creates opportunity #1. Expected Status: 201 Created."
+      },
+      "response": []
+    },
+    {
+      "name": "1. Create Opportunity #2 (Zero-Trust SDN)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Zero-Trust Software Defined Networking\",\n  \"description\": \"Analyze zero-trust architecture, micro-segmentation, and dynamic flow verification inside SDN controllers.\",\n  \"area\": \"Computer Networks & Cybersecurity\",\n  \"faculty_name\": \"Dr. Ayesha Malik\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Mininet, Python, Ryu SDN Controller, Wireshark\",\n  \"available_positions\": 3,\n  \"deadline\": \"2026-12-15\",\n  \"status\": \"Open\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        },
+        "description": "Scenario 1: Creates opportunity #2. Expected Status: 201 Created."
+      },
+      "response": []
+    },
+    {
+      "name": "1. Create Opportunity #3 (Low-Power IoT Mesh)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Distributed Consensus in Low-Power IoT Mesh\",\n  \"description\": \"Design and benchmark lightweight consensus mechanisms optimized for battery-powered LoRaWAN mesh nodes.\",\n  \"area\": \"Internet of Things & Distributed Systems\",\n  \"faculty_name\": \"Dr. Bilal Ahmed\",\n  \"department\": \"Electrical Engineering\",\n  \"required_skills\": \"C/C++, Embedded Systems, LoRaWAN, NS-3\",\n  \"available_positions\": 1,\n  \"deadline\": \"2026-11-20\",\n  \"status\": \"Open\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        },
+        "description": "Scenario 1: Creates opportunity #3. Expected Status: 201 Created."
+      },
+      "response": []
+    },
+    {
+      "name": "2. Retrieve All Research Opportunities",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        },
+        "description": "Scenario 2: Return all research opportunities stored in the database. Expected Status: 200 OK."
+      },
+      "response": []
+    },
+    {
+      "name": "3. Retrieve One Research Opportunity by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities/{{testOpportunityId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{testOpportunityId}}"
+          ]
+        },
+        "description": "Scenario 3: Return complete details of a specific opportunity using its ID. Expected Status: 200 OK."
+      },
+      "response": []
+    },
+    {
+      "name": "4. Update a Research Opportunity",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Zero-Trust Software Defined Networking (Updated)\",\n  \"required_skills\": \"Mininet, Python 3, Ryu SDN Controller, Wireshark, eBPF\",\n  \"available_positions\": 4,\n  \"deadline\": \"2026-12-31\",\n  \"status\": \"Open\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities/{{testOpportunityId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{testOpportunityId}}"
+          ]
+        },
+        "description": "Scenario 4: Update fields of an existing opportunity. Expected Status: 200 OK."
+      },
+      "response": []
+    },
+    {
+      "name": "5. Change Opportunity Status (Open to Closed)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"Closed\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities/{{testOpportunityId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{testOpportunityId}}"
+          ]
+        },
+        "description": "Scenario 5: Changing opportunity status from Open to Closed. Expected Status: 200 OK."
+      },
+      "response": []
+    },
+    {
+      "name": "6. Delete a Research Opportunity",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities/{{testOpportunityId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{testOpportunityId}}"
+          ]
+        },
+        "description": "Scenario 6: Delete a research opportunity that is no longer required. Expected Status: 200 OK."
+      },
+      "response": []
+    },
+    {
+      "name": "7. Demonstrate 404 Not Found (Deleted Opportunity)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities/{{testOpportunityId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{testOpportunityId}}"
+          ]
+        },
+        "description": "Scenario 7: Requesting the deleted opportunity again to demonstrate 404 Not Found error response."
+      },
+      "response": []
+    },
+    {
+      "name": "8. Demonstrate 400 Bad Request (Validation Failure)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"\",\n  \"faculty_name\": \"\",\n  \"available_positions\": -5,\n  \"status\": \"InvalidStatus\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        },
+        "description": "Scenario 8: Sending request containing missing required fields and negative available positions to demonstrate input validation (400 Bad Request)."
+      },
+      "response": []
+    }
+  ]
+}
